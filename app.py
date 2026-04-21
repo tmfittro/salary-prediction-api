@@ -5,14 +5,12 @@ app = Flask(__name__)
 
 model = joblib.load("model.pkl")
 
-@app.route("/")
-def home():
-    return "API is running"
-
 @app.route("/predict", methods=["POST"])
 def predict():
     try:
-        data = request.get_json()   # 🔥 THIS IS THE FIX
+        data = request.get_json()
+
+        print("INCOMING:", data)
 
         age = data.get("age")
         gender = data.get("gender")
@@ -22,12 +20,12 @@ def predict():
         title = data.get("title")
 
         if None in [age, gender, country, highest_deg, coding_exp, title]:
-            return jsonify({"error": "Missing one or more required fields"}), 400
+            return {"error": "Missing one or more required fields"}, 400
 
         input_data = [[age, gender, country, highest_deg, coding_exp, title]]
         prediction = model.predict(input_data)[0]
 
-        return jsonify({"prediction": float(prediction)})
+        return {"prediction": float(prediction)}
 
     except Exception as e:
-        return jsonify({"error": str(e)}), 500
+        return {"error": str(e)}, 500
