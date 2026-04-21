@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/9a07412e-7535-4341-b16a-7a16622563ef/resourceGroups/BAIS-tmfittro-rg/providers/Microsoft.Web/sites/taryn-salary-api-2",
+    "appService.deploySubpath": "."
+}
