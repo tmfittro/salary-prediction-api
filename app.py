@@ -75,3 +75,8 @@ def predict():
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5002, debug=True)
 
+<<<<<<< HEAD
+=======
+if __name__ == "__main__":
+    app.run()
+>>>>>>> 17813dc127730c0c0738eaa199555f36f7c1ad38
